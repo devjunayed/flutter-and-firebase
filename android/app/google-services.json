@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "279344654951",
+    "project_id": "junayed-firebase-playground",
+    "storage_bucket": "junayed-firebase-playground.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279344654951:android:39a24170e5288b6ac402c2",
+        "android_client_info": {
+          "package_name": "com.junayed.firebase_playground"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "279344654951-s7588e2i2l2cam2a6qkkqucbvdkv2ie3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi5JYztvLnsem473DGKt2RsswzMGBhIJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279344654951-s7588e2i2l2cam2a6qkkqucbvdkv2ie3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
