@@ -1,6 +1,9 @@
 import 'package:firebase_playground/screens/auth/login_screen.dart';
+import 'package:firebase_playground/utils/utils.dart';
 import 'package:firebase_playground/widgets/round_button.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -13,6 +16,8 @@ class _SignUpState extends State<SignUp> {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -84,17 +89,45 @@ class _SignUpState extends State<SignUp> {
             RoundButton(
               title: 'Sign Up',
               onTap: () {
-                if (_formKey.currentState!.validate()) {}
+                if (_formKey.currentState!.validate()) {
+                  _auth
+                      .createUserWithEmailAndPassword(
+                          email: emailController.text.toString(),
+                          password: passwordController.text.toString())
+                      .then((value) {})
+                      .catchError(
+                    (error) {
+                      if (error is FirebaseAuthException) {
+                        print("***********************");
+                        Utils().toastMessage(error.toString());
+                        print('Jaira lok koy ki');
+                      //   Fluttertoast.showToast(
+                      //       msg: "This is a toast message",
+                      //       toastLength: Toast.LENGTH_SHORT,
+                      //       gravity: ToastGravity.BOTTOM,
+                      //       timeInSecForIosWeb: 1,
+                      //       backgroundColor: Colors.red,
+                      //       textColor: Colors.white,
+                      //       fontSize: 16.0);
+                     }
+                    },
+                  );
+                }
               },
             ),
-            const SizedBox(height: 30,),
+            const SizedBox(
+              height: 30,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text("Already have an account?"),
                 TextButton(
-                  onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()));
                   },
                   child: const Text('Sign In'),
                 ),
